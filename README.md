@@ -1,3 +1,11 @@
+# Core loop (alur utama permainan)
+
+1. Pemain melakukan **commit** untuk memulai sebuah hand: melempar `diceCount` dadu (pada skeleton saat ini: 5 dadu, max 3 commit per ronde).
+2. Sistem me-roll dadu (`DiceSystem::rollDice`) lalu mengevaluasi combo yang terbentuk (`DiceEvaluator::evaluate`).
+3. Sistem menghitung skor hand (saat ini masih dummy di `RunSession::playHand`; nantinya dapat memakai `ScoringSystem`) dan menerapkan reward/penalty ke skor ronde.
+4. State game diperbarui: `totalScore` bertambah, `commitLeft` berkurang, lalu sistem mengecek kondisi menang/kalah ronde (capai `targetScore` atau commit habis).
+5. Jika ronde menang, sistem memberi reward coin dan membuka shop (`ShopSystem::openShop`), lalu ronde berikutnya dimulai; jika ronde belum selesai, kembali ke langkah 1.
+   
 # Reflection
 
 ### 1. What is the invariant structure of your game?
