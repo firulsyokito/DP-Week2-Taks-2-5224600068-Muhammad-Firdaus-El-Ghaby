@@ -13,7 +13,7 @@ private:
     DiceSystem    diceSystem;
     DiceEvaluator evaluator;
 
-    void playHand(std::vector<int>& dice, int& totalScore, int& commitLeft, int targetScore, int handPenalty, int diceCount);
+    void playHand(std::vector<int>& dice, int& totalScore, int& commitLeft, int& rerollLeft, int targetScore, int handPenalty, int diceCount);
     void playRound(int round, int& coins, bool& runLost);
 
 public:

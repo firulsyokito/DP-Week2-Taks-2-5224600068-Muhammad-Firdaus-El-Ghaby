@@ -1,25 +1,29 @@
 #include "DiceSystem.h"
-#include <iostream>
+#include <cstdlib>
 
 int DiceSystem::rollValueForSlot(int slotIndex) const {
-    std::cout << "[DiceSystem] rollValueForSlot(" << slotIndex << ")\n";
-    return 1;
+    (void)slotIndex;
+    return (rand() % 6) + 1;
 }
 
 std::vector<int> DiceSystem::rollDice(int count) {
     // TODO: roll sebanyak count, kembalikan vector hasil
-    std::cout << "[DiceSystem] rollDice count=" << count << "\n";
-    return std::vector<int>(count, 1);
+    std::vector<int> dice(count);
+    for (int i = 0; i < count; i++) {
+        dice[i] = rollValueForSlot(i);
+    }
+    return dice;
 }
 
 void DiceSystem::rerollDice(std::vector<int>& dice) {
     // TODO: minta input index dari pemain, reroll dadu yang dipilih
-    std::cout << "[DiceSystem] rerollDice\n";
+    for (size_t i = 0; i < dice.size(); i++) {
+        dice[i] = rollValueForSlot(static_cast<int>(i));
+    }
 }
 
 void DiceSystem::setDiceTypeName(int slotIndex, const std::string& typeName) {
     // TODO: set nama tipe dadu pada slot tertentu
-    std::cout << "[DiceSystem] setDiceTypeName slot=" << slotIndex << " name=" << typeName << "\n";
 }
 
 std::string DiceSystem::getDiceTypeNameAt(int slotIndex) const {
@@ -31,7 +35,6 @@ std::vector<std::string> DiceSystem::getDiceTypeNames(int count) const {
 }
 
 int DiceSystem::calculateDiceValueScore(const std::vector<int>& dice) const {
-    std::cout << "[DiceSystem] calculateDiceValueScore\n";
     return 0;
 }
 
