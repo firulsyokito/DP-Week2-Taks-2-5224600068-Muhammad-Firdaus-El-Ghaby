@@ -1,4 +1,4 @@
-# Refleksi
+# Reflection
 
 ### 1. What is the invariant structure of your game?
 
